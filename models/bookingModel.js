@@ -2,13 +2,22 @@
 const mongoose = require('mongoose');
 
 const bookingSchema = new mongoose.Schema({
-    customerName: String,
-    bookingDate: Date,
-    tableNumber: Number,
+    customerName: {
+        type: String,
+        required: true,
+    },
+    bookingDate: {
+        type: Date,
+        required: true,
+    },
+    tableNumber: {
+        type: Number,
+        required: true,
+    },
     restaurantId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'resturantModel',
+        required: true,
+        ref: 'resturant',
     }
 });
-
 module.exports = mongoose.model('Booking', bookingSchema);
